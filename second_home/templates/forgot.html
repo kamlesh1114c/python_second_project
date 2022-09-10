@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+</head>
+<body>
+<form action="{% url 'forgot' %}" method="POST">
+  {% csrf_token %}
+  <div class="container">
+    <h1>Forgot Password</h1>
+    <hr>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email " name="email" id="psw-repeat" >
+    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
+
+  
+      <center>
+        <a href="{% url 'verify_otp' %}"><button type="submit" class="registerbtn">Send OTP</button></a>
+      </center>   </div>
+{% if msg %}
+<center>
+   <font size="4px;">
+  <b style="color:red;">{{msg}}</b>
+  </font>
+</center>
+  {% endif %}
+</form>
+
+ </body>
+</html>

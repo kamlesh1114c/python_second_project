@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+</head>
+<body>
+<form action="{% url 'edit_profile' %}" method="POST">
+  {% csrf_token %}
+  <div class="container">
+    <h1>Edit Profile</h1>
+    <p>Update your Data.</p>
+    <hr>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Email" name="name" value="{{user.username}}" id="name" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" value="{{user.email}}" readonly id="email" required>
+
+    <label for="mobile"><b>Mobile</b></label>
+    <input type="text" placeholder="Enter Mobile Number" name="mobile" value="{{user.mobile}}" id="mobile" required>
+    <br>
+    <br>
+    <br>
+    <br>
+    <tr>
+      <td colspan="2" align="center">
+        <img src="{{user.profile_pic.url}}" width="100px" height="100px">
+      </td>
+    </tr>
+    
+    <label for="profile_pic"><b> Edit your profil picture</b></label>
+    <input type="file" placeholder="selecte picture " name="profile_pic">
+      <center>
+        <button type="submit" class="registerbtn">Update Profile</button>
+      </center> 
+  </div>
+{% if msg %}
+<center>
+   <font size="4px;">
+  <b style="color:red;">{{msg}}</b>
+  </font>
+</center>
+  {% endif %}
+</form>
+
+ </body>
+</html>
